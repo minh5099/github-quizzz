@@ -43,7 +43,7 @@ class NguoiChoiController extends Controller
         $nguoiChoi->hinh_dai_dien = $request->hinh_dai_dien;
         $nguoiChoi->diem_cao_nhat = $request->diem_cao_nhat;
         $nguoiChoi->credit = $request->credit;
-
+        $nguoiChoi->mat_khau = bcrypt($request->mat_khau);
         $nguoiChoi->save();
         return redirect()->route('nguoi-choi.danh-sach');
     }
@@ -87,7 +87,8 @@ class NguoiChoiController extends Controller
         $nguoiChoi->hinh_dai_dien = $request->hinh_dai_dien;
         $nguoiChoi->diem_cao_nhat = $request->diem_cao_nhat;
         $nguoiChoi->credit = $request->credit;
-
+        $nguoiChoi->mat_khau = bcrypt($request->mat_khau);
+        
         $nguoiChoi->save();
         return redirect()->route('nguoi-choi.danh-sach');
     }

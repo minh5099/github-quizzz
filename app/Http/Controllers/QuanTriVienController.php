@@ -40,6 +40,7 @@ class QuanTriVienController extends Controller
         $quanTriVien->ten_dang_nhap = $request->ten_dang_nhap;
         $quanTriVien->mat_khau = $request->mat_khau;
         $quanTriVien->ho_ten = $request->ho_ten;
+        $quanTriVien->mat_khau = bcrypt($request->mat_khau);
         $quanTriVien->save();
 
         return redirect()->route('quan-tri-vien.danh-sach');
@@ -80,8 +81,9 @@ class QuanTriVienController extends Controller
     {
         $quanTriVien = QuanTriVien::find($id);
         $quanTriVien->ten_dang_nhap = $request->ten_dang_nhap;
+        $quanTriVien->mat_khau = $request->mat_khau;
         $quanTriVien->ho_ten = $request->ho_ten;
-
+        $quanTriVien->mat_khau = bcrypt($request->mat_khau);
         $quanTriVien->save();
         return redirect()->route('quan-tri-vien.danh-sach');
     }
