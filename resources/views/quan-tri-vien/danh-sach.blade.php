@@ -25,7 +25,7 @@
                         @foreach($listQuanTri as $quanTriVien)
                         <tr> 
                             <td>{{ $quanTriVien->id }}</td> <!--Trỏ lấy id trong table gói credit qua controller-->
-                            <td>{{ $quanTriVien->ten_dang_nhap }}</td>
+                            <td>{{ $quanTriVien->email }}</td>
                             <td>{{ $quanTriVien->ho_ten }}</td>
                             <td>
                                 <a href="{{ route('quan-tri-vien.cap-nhat', ['id' => $quanTriVien->id]) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-pencil"></i></a>

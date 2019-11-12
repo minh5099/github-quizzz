@@ -14,15 +14,13 @@ Route::get('admin/dangnhap','QuanTriVienController@getLogin')->name('dangnhap');
 Route::post('admin/dangnhap','QuanTriVienController@postLogin')->name('xu-ly');
 
 //Route Logout
-Route::post('admin/logout','QuanTriVienController@logoutAdmin')->name('xu-ly');
+Route::get('admin/logout','QuanTriVienController@logoutAdmin')->name('logout');
 
-
-Route::middleware('adminLogin')->group(function(){
-
-	Route::get('/', function () {
-    return view('layou');
+Route::get('/', function () {
+    return view('layout');
 })->name('dashboard');
 
+Route::middleware('adminLogin')->group(function(){
 Route::prefix('linh-vuc')->group(function() {
 	Route::name('linh-vuc.')->group(function() {
 		Route::get('/', 'LinhVucController@index')->name('danh-sach');
@@ -110,5 +108,4 @@ Route::prefix('tro-giup')->group(function(){
 		Route::get('xoa/{id}','TroGiupController@destroy')->name('xoa');
 	});
 });
-
 });

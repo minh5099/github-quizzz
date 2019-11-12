@@ -22,12 +22,12 @@
                             </ul>    
                         @endif
                         <div class="form-group">
-                            <label for="ten_dang_nhap">Tên Đăng Nhập</label>
-                            <input type="text" class="form-control" id="ten_dang_nhap" name="ten_dang_nhap" placeholder="Tên Đăng Nhập" @if(isset($quanTriVien)) value="{{ $quanTriVien->ten_dang_nhap }}" @endif>
+                            <label for="email">Tên Đăng Nhập</label>
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Tên Đăng Nhập" @if(isset($quanTriVien)) value="{{ $quanTriVien->email }}" @endif>
                         </div>
                         <div class="form-group">
-                            <label for="mat_khau">Mật Khẩu</label>
-                            <input type="password" class="form-control" id="mat_khau" name="mat_khau" placeholder="Mật Khẩu" @if(isset($quanTriVien)) value="{{ $quanTriVien->mat_khau }}" @endif>
+                            <label for="password">Mật Khẩu</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Mật Khẩu" @if(isset($quanTriVien)) value="{{ $quanTriVien->password }}" @endif>
                         </div>
                        <div class="form-group">
                             <label for="ho_ten">Họ Tên</label>

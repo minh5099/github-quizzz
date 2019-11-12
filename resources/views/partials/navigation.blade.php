@@ -139,14 +139,13 @@
                     </div>
 
                     <!-- item-->
-                    @if(isset($user_login))
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-user"></i>
-                        <span>{{ $user->email }}</span>
+                        <span>Tài Khoản</span>
                     </a>
 
                     <!-- item-->
-                    <a href="{{route('quan-tri-vien.cap-nhat',[$user-login->id])}}" class="dropdown-item notify-item" >
+                    <a href="#" class="dropdown-item notify-item" >
                         <i class="fe-settings"></i>
                         <span>Settings</span>
                     </a>
@@ -154,11 +153,10 @@
                     <div class="dropdown-divider"></div>
 
                     <!-- item-->
-                    <a href="admin/logout" class="dropdown-item notify-item">
+                    <a href="{{route('logout')}}" type="button" class="dropdown-item notify-item">
                         <i class="fe-log-out"></i>
                         <span>Logout</span>
                     </a>
-                    @endif
                 </div>
             </li>
 

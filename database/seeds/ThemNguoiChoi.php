@@ -12,7 +12,7 @@ class ThemNguoiChoi extends Seeder
     public function run()
     {
         $count = 1;
-        while($count < 51) {
+        while($count < 21) {
 			echo "Them nguoi choi " . $count . "\n";
         	$tenDangNhap = Str::random(8);
         	App\NguoiChoi::create([

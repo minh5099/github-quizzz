@@ -40,10 +40,9 @@ class QuanTriVienController extends Controller
     public function store(RequestQuanTriVien $request)
     {
         $quanTriVien = new QuanTriVien();
-        $quanTriVien->ten_dang_nhap = $request->ten_dang_nhap;
-        $quanTriVien->mat_khau = $request->mat_khau;
+        $quanTriVien->email = $request->email;
         $quanTriVien->ho_ten = $request->ho_ten;
-        $quanTriVien->mat_khau = bcrypt($request->mat_khau);
+        $quanTriVien->password = bcrypt($request->password);
         $quanTriVien->save();
 
         return redirect()->route('quan-tri-vien.danh-sach');
@@ -83,10 +82,9 @@ class QuanTriVienController extends Controller
     public function update(RequestQuanTriVien $request, $id)
     {
         $quanTriVien = QuanTriVien::find($id);
-        $quanTriVien->ten_dang_nhap = $request->ten_dang_nhap;
-        $quanTriVien->mat_khau = $request->mat_khau;
+        $quanTriVien->email = $request->email;
         $quanTriVien->ho_ten = $request->ho_ten;
-        $quanTriVien->mat_khau = bcrypt($request->mat_khau);
+        $quanTriVien->password = bcrypt($request->password);
         $quanTriVien->save();
         return redirect()->route('quan-tri-vien.danh-sach');
     }
@@ -114,7 +112,7 @@ class QuanTriVienController extends Controller
     {
         if(Auth::attempt(['email' => $request->email,'password'=>$request->password]))
         {
-            return redirect("/");
+            return redirect('/');
         }
         else
         {
