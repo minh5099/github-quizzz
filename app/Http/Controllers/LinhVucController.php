@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\LinhVuc;
+use App\Http\Requests\RequestLinhVuc;
 
 class LinhVucController extends Controller
 {
@@ -35,7 +36,7 @@ class LinhVucController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequestLinhVuc $request)
     {
         $linhVuc = new LinhVuc;
         $linhVuc->ten_linh_vuc = $request->ten_linh_vuc;
@@ -74,7 +75,7 @@ class LinhVucController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RequestLinhVuc $request, $id)
     {
         $linhVuc = LinhVuc::find($id);
         $linhVuc->ten_linh_vuc = $request->ten_linh_vuc;

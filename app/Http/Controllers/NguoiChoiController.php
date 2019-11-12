@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\NguoiChoi;
+use App\Http\Requests\RequestNguoiChoi;
 
 class NguoiChoiController extends Controller
 {
@@ -34,7 +35,7 @@ class NguoiChoiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequestNguoiChoi $request)
     {
         $nguoiChoi = new NguoiChoi;
         $nguoiChoi->ten_dang_nhap = $request->ten_dang_nhap;
@@ -78,7 +79,7 @@ class NguoiChoiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RequestNguoiChoi $request, $id)
     {
         $nguoiChoi = NguoiChoi::find($id);
         $nguoiChoi->ten_dang_nhap = $request->ten_dang_nhap;

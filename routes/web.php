@@ -10,8 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('admin/dangnhap','QuanTriVienController@getLogin')->name('dangnhap');
+Route::post('admin/dangnhap','QuanTriVienController@postLogin')->name('xu-ly');
 
-Route::get('/', function () {
+Route::middleware('adminLogin')->group(function(){
+
+	Route::get('/', function () {
     return view('layou');
 })->name('dashboard');
 
@@ -101,4 +105,6 @@ Route::prefix('tro-giup')->group(function(){
 		Route::post('cap-nhat/{id}','TroGiupController@update')->name('xu-ly-cap-nhat');
 		Route::get('xoa/{id}','TroGiupController@destroy')->name('xoa');
 	});
+});
+
 });

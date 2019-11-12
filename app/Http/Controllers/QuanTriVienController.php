@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\QuanTriVien;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\RequestQuanTriVien;
 
 class QuanTriVienController extends Controller
 {
@@ -34,7 +37,7 @@ class QuanTriVienController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequestQuanTriVien $request)
     {
         $quanTriVien = new QuanTriVien();
         $quanTriVien->ten_dang_nhap = $request->ten_dang_nhap;
@@ -77,7 +80,7 @@ class QuanTriVienController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RequestQuanTriVien $request, $id)
     {
         $quanTriVien = QuanTriVien::find($id);
         $quanTriVien->ten_dang_nhap = $request->ten_dang_nhap;
@@ -100,5 +103,22 @@ class QuanTriVienController extends Controller
         $quanTriVien->delete();
 
         return redirect()->route('quan-tri-vien.danh-sach');
+    }
+
+    public function getLogin()
+    {
+        return view('login');
+    }
+
+    public function postLogin(Request $request)
+    {
+        if(Auth::attempt(['ten_dang_nhap' => $request->email,'mat_khau' => $request->password]))
+        {
+            return redirect('/');
+        }
+        else
+        {
+            return redirect('admin/dangnhap')->with('thongbao','Đăng Nhập Thất Bại');
+        }
     }
 }
