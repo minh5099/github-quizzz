@@ -1,4 +1,4 @@
-@extends('layou')
+@extends('layout')
 
 @section('main-content')
 <div class="row">
@@ -12,6 +12,15 @@
                     <form action="{{ route('goi-credit.xu-ly-them-moi') }}" method="POST">
                 @endif
                         @csrf
+                        @if(count($errors)>0)
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                <li class="alert alert-danger">
+                                    {{$error}}
+                                </li>
+                                @endforeach
+                            </ul>    
+                        @endif
                         <div class="form-group">
                             <label for="ten_goi">Tên Gói</label>
                             <input type="text" class="form-control" id="ten_goi" name="ten_goi" placeholder="Tên Gói" @if(isset($goiCredit)) value="{{ $goiCredit->ten_goi }}" @endif>

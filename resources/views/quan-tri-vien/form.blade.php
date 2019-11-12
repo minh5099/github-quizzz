@@ -1,4 +1,4 @@
-@extends('layou')
+@extends('layout')
 
 @section('main-content')
 <div class="row">
@@ -12,6 +12,15 @@
                     <form action="{{ route('quan-tri-vien.xu-ly-them-moi') }}" method="POST">
                 @endif
                         @csrf
+                        @if(count($errors)>0)
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                <li class="alert alert-danger">
+                                    {{$error}}
+                                </li>
+                                @endforeach
+                            </ul>    
+                        @endif
                         <div class="form-group">
                             <label for="ten_dang_nhap">Tên Đăng Nhập</label>
                             <input type="text" class="form-control" id="ten_dang_nhap" name="ten_dang_nhap" placeholder="Tên Đăng Nhập" @if(isset($quanTriVien)) value="{{ $quanTriVien->ten_dang_nhap }}" @endif>

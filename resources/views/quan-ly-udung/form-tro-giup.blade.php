@@ -1,4 +1,4 @@
-@extends('layou')
+@extends('layout')
 
 @section('main-content')
 <div class="row">

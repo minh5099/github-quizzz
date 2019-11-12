@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLuotChoisTable extends Migration
+class CreateLichSuMuaCreditsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateLuotChoisTable extends Migration
      */
     public function up()
     {
-        Schema::create('luot_chois', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('lich_su_mua_credits', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedInteger('nguoi_choi_id');
-            $table->integer('so_cau');
-            $table->integer('diem');
-            $table->text('ngay_gio');
+            $table->unsignedInteger('goi_credit_id');
+            $table->integer('credit');
+            $table->integer('so_tien');
             $table->foreign('nguoi_choi_id')->references('id')->on('nguoi_chois')->onDelete('cascade');
+            $table->foreign('goi_credit_id')->references('id')->on('goi_credits')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateLuotChoisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('luot_chois');
+        Schema::dropIfExists('lich_su_mua_credits');
     }
 }
