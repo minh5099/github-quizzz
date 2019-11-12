@@ -18,6 +18,7 @@ class CreateQuanTriViensTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->text('ho_ten');
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });

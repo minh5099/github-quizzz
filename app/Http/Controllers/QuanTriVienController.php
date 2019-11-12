@@ -112,13 +112,20 @@ class QuanTriVienController extends Controller
 
     public function postLogin(Request $request)
     {
-        if(Auth::attempt(['ten_dang_nhap' => $request->email,'mat_khau' => $request->password]))
+        if(Auth::attempt(['email' => $request->email,'password'=>$request->password]))
         {
-            return redirect('/');
+            return redirect("/");
         }
         else
         {
-            return redirect('admin/dangnhap')->with('thongbao','Đăng Nhập Thất Bại');
+            return redirect("admin/dangnhap")->with('thongbao','Đăng Nhập Thất Bại');
         }
     }
+
+    public function logoutAdmin()
+    {
+        Auth::logout();
+        return redirect('admin/dangnhap');
+    }
+
 }

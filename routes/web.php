@@ -13,6 +13,10 @@
 Route::get('admin/dangnhap','QuanTriVienController@getLogin')->name('dangnhap');
 Route::post('admin/dangnhap','QuanTriVienController@postLogin')->name('xu-ly');
 
+//Route Logout
+Route::post('admin/logout','QuanTriVienController@logoutAdmin')->name('xu-ly');
+
+
 Route::middleware('adminLogin')->group(function(){
 
 	Route::get('/', function () {
