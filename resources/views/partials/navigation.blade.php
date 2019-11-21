@@ -122,13 +122,15 @@
 
                 </div>
             </li>
-
+           
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="{{asset('assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle">
+                     @if(Auth::check())
                     <span class="pro-user-name ml-1">
-                        Marcia J. <i class="mdi mdi-chevron-down"></i> 
+                        {{Auth::user()->ho_ten}}<i class="mdi mdi-chevron-down"></i> 
                     </span>
+                     @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                     <!-- item-->
@@ -137,15 +139,9 @@
                             Welcome !
                         </h5>
                     </div>
-
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-user"></i>
-                        <span>Tài Khoản</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="#" class="dropdown-item notify-item" >
+                    
+                    <a href="{{route('quan-tri-vien.cap-nhat',['id' => Auth::user()->id])}}" class="dropdown-item notify-item" >
                         <i class="fe-settings"></i>
                         <span>Settings</span>
                     </a>
@@ -159,7 +155,7 @@
                     </a>
                 </div>
             </li>
-
+           
             <li class="dropdown notification-list">
                 <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect">
                     <i class="fe-settings noti-icon"></i>
@@ -331,22 +327,47 @@
 
                 <li class="has-submenu">
                     <a href="{{ route('linh-vuc.danh-sach') }}"> <i class="fas fa-list"></i>Lĩnh Vực</a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="{{ route('linh-vuc.bin') }}">Bin</a>
+                        </li>
+                    </ul>  
                 </li>
 
                 <li class="has-submenu">
                     <a href="{{ route('cau-hoi.danh-sach') }}"> <i class="fas fa-question"></i>Câu Hỏi</a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="{{ route('cau-hoi.bin') }}">Bin</a>
+                        </li>
+                    </ul>  
                 </li>
 
                 <li class="has-submenu">
                     <a href="{{ route('goi-credit.danh-sach') }}"> <i class="fas fa-coins"></i>Gói Credit</a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="{{ route('goi-credit.bin') }}">Bin</a>
+                        </li>
+                    </ul>  
                 </li>
 
                 <li class="has-submenu">
                     <a href="{{ route('nguoi-choi.danh-sach') }}"> <i class="fas fa-users"></i>Danh Sách Người Chơi</a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="{{ route('nguoi-choi.bin') }}">Bin</a>
+                        </li>
+                    </ul>   
                 </li>
 
                 <li class="has-submenu">
                     <a href="{{ route('quan-tri-vien.danh-sach') }}"> <i class="fas fa-users-cog"></i>Quản Trị Viên</a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="{{ route('quan-tri-vien.bin') }}">Bin</a>
+                        </li>
+                    </ul>  
                 </li>
 
                  <li class="has-submenu">

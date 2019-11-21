@@ -7,6 +7,7 @@ use App\QuanTriVien;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RequestQuanTriVien;
+use DB;
 
 class QuanTriVienController extends Controller
 {
@@ -102,6 +103,25 @@ class QuanTriVienController extends Controller
 
         return redirect()->route('quan-tri-vien.danh-sach');
     }
+
+    //Function data has softDeletes
+    public function bin()
+    {
+        $deleteQTV = QuanTriVien::onlyTrashed()->get();
+        return view('quan-tri-vien.bin',compact('deleteQTV'));
+    }
+
+    public function restore($id)
+    {
+        QuanTriVien::onlyTrashed()->where('id',$id)->restore();
+        return redirect()->route('quan-tri-vien.danh-sach');
+    }
+
+    //public function delData($id)
+    //{
+    //    DB::table('quan_tri_viens')->where('id',$id)->delete();
+    //    return view('quan-tri-vien.bin');
+    //}
 
     public function getLogin()
     {

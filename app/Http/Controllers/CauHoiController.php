@@ -114,4 +114,16 @@ class CauHoiController extends Controller
 
         return redirect()->route('cau-hoi.danh-sach');
     }
+
+    public function bin()
+    {
+        $deleteCH = CauHoi::onlyTrashed()->get();
+        return view('cau-hoi.bin',compact('deleteCH'));
+    }
+
+    public function restore($id)
+    {
+        CauHoi::onlyTrashed()->where('id',$id)->restore();
+        return redirect()->route('cau-hoi.danh-sach');
+    }
 }

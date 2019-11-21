@@ -97,4 +97,16 @@ class LinhVucController extends Controller
 
         return redirect()->route('linh-vuc.danh-sach');
     }
+
+    public function bin()
+    {
+        $deleteLV = LinhVuc::onlyTrashed()->get();
+        return view('linh-vuc.bin',compact('deleteLV'));
+    }
+
+    public function restore($id)
+    {
+        LinhVuc::onlyTrashed()->where('id',$id)->restore();
+        return redirect()->route('linh-vuc.danh-sach');
+    }
 }

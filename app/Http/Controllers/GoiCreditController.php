@@ -101,4 +101,16 @@ class GoiCreditController extends Controller
 
         return redirect()->route('goi-credit.danh-sach');
     }
+
+    public function bin()
+    {
+        $deleteGoi = GoiCredit::onlyTrashed()->get();
+        return view('goi-credit.bin',compact('deleteGoi'));
+    }
+
+    public function restore($id)
+    {
+        GoiCredit::onlyTrashed()->where('id',$id)->restore();
+        return redirect()->route('goi-credit.danh-sach');
+    }
 }

@@ -27,7 +27,7 @@
                         </div>
                         <div class="form-group">
                             <label for="password">Mật Khẩu</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Mật Khẩu" @if(isset($quanTriVien)) value="{{ $quanTriVien->password }}" @endif>
+                            <input  class="form-control" id="password" name="password" placeholder="Mật Khẩu" @if(isset($quanTriVien)) value="{{ $quanTriVien->password }}" @endif>
                         </div>
                        <div class="form-group">
                             <label for="ho_ten">Họ Tên</label>

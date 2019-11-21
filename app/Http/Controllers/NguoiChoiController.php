@@ -107,4 +107,16 @@ class NguoiChoiController extends Controller
 
         return redirect()->route('nguoi-choi.danh-sach');
     }
+
+    public function bin()
+    {
+        $deleteNC = NguoiChoi::onlyTrashed()->get();
+        return view('nguoi-choi.bin',compact('deleteNC'));
+    }
+
+    public function restore($id)
+    {
+        NguoiChoi::onlyTrashed()->where('id',$id)->restore();
+        return redirect()->route('nguoi-choi.danh-sach');
+    }
 }
