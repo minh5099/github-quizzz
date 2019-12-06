@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RequestQuanTriVien;
 use DB;
+use Validator;
 
 class QuanTriVienController extends Controller
 {
@@ -38,15 +39,41 @@ class QuanTriVienController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RequestQuanTriVien $request)
+    public function store(Request $request)
     {
-        $quanTriVien = new QuanTriVien();
-        $quanTriVien->email = $request->email;
-        $quanTriVien->ho_ten = $request->ho_ten;
-        $quanTriVien->password = bcrypt($request->password);
-        $quanTriVien->save();
+         $validator = Validator::make($request->all(),
+            [
+                'email' => 'required|unique:quan_tri_viens|min:5|email|max:32',
+                'ho_ten' => 'required|min:5|max:32',
+                'password' => 'required|min:8|max:32',
+            ],
+            [
+                'email.required' => 'Email Không Được Bỏ Trống',
+                'email.unique' => 'Email Đã Tồn Tại',
+                'email.min' => 'Email ít nhất 5 kí tự và ít hơn 32 kí tự',
+                'email.max' => 'Email ít nhất 5 kí tự và ít hơn 32 kí tự',
+                'email.email' => 'Không đúng định dạng',
+                'ho_ten.required' => 'Nhập Họ Tên Tên',
+                'ho_ten.min' => 'Họ Tên ít nhất 5 kí tự và ít hơn 32 kí tự',
+                'ho_ten.max' => 'Họ Tên ít nhất 5 kí tự và ít hơn 32 kí tự',
+                'password.required' => 'Nhập Mật Khẩu',
+                'password.min' => 'Mật Khẩu ít nhất 8 kí tự và ít hơn 32 kí tự',
+                'password.max' => 'Mật Khẩu ít nhất 8 kí tự và ít hơn 32 kí tự'
 
-        return redirect()->route('quan-tri-vien.danh-sach');
+            ]);
+        if($validator->passes())
+        {
+            $quanTriVien = new QuanTriVien();
+            $quanTriVien->email = $request->email;
+            $quanTriVien->ho_ten = $request->ho_ten;
+            $quanTriVien->password = bcrypt($request->password);
+            $quanTriVien->save();
+            return response()->json(['success'=>'Thêm Mới Thành Công.']);
+        }
+        else{
+            return response()->json(['error'=>$validator->errors()->all()]);
+        }
+        
     }
 
     /**
@@ -80,14 +107,40 @@ class QuanTriVienController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RequestQuanTriVien $request, $id)
+    public function update(Request $request, $id)
     {
-        $quanTriVien = QuanTriVien::find($id);
-        $quanTriVien->email = $request->email;
-        $quanTriVien->ho_ten = $request->ho_ten;
-        $quanTriVien->password = bcrypt($request->password);
-        $quanTriVien->save();
-        return redirect()->route('quan-tri-vien.danh-sach');
+        $validator = Validator::make($request->all(),
+            [
+                'email' => 'required|unique:quan_tri_viens|min:5|email|max:32',
+                'ho_ten' => 'required|min:5|max:32',
+                'password' => 'required|min:8|max:32',
+            ],
+            [
+                'email.required' => 'Email Không Được Bỏ Trống',
+                'email.unique' => 'Email Đã Tồn Tại',
+                'email.min' => 'Email ít nhất 5 kí tự và ít hơn 32 kí tự',
+                'email.max' => 'Email ít nhất 5 kí tự và ít hơn 32 kí tự',
+                'email.email' => 'Không đúng định dạng',
+                'ho_ten.required' => 'Nhập Họ Tên Tên',
+                'ho_ten.min' => 'Họ Tên ít nhất 5 kí tự và ít hơn 32 kí tự',
+                'ho_ten.max' => 'Họ Tên ít nhất 5 kí tự và ít hơn 32 kí tự',
+                'password.required' => 'Nhập Mật Khẩu',
+                'password.min' => 'Mật Khẩu ít nhất 8 kí tự và ít hơn 32 kí tự',
+                'password.max' => 'Mật Khẩu ít nhất 8 kí tự và ít hơn 32 kí tự'
+
+            ]);
+        if($validator->passes())
+        {
+            $quanTriVien = QuanTriVien::find($id);
+            $quanTriVien->email = $request->email;
+            $quanTriVien->ho_ten = $request->ho_ten;
+            $quanTriVien->password = bcrypt($request->password);
+            $quanTriVien->save();
+            return response()->json(['success'=>'Cập Nhật Thành Công.']);
+        }
+        else{
+            return response()->json(['error'=>$validator->errors()->all()]);
+        }
     }
 
     /**

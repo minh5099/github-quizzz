@@ -29,7 +29,7 @@
                             <td>{{ $quanTriVien->ho_ten }}</td>
                             <td>
                                 <a href="{{ route('quan-tri-vien.cap-nhat', ['id' => $quanTriVien->id]) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-pencil"></i></a>
-                                <a href="{{ route('quan-tri-vien.xoa', ['id' => $quanTriVien->id]) }}" class="btn btn-danger waves-effect waves-light"><i class="fas fa-trash"></i></a>
+                                <a href="{{ route('quan-tri-vien.xoa', ['id' => $quanTriVien->id]) }}" id="delete-form" class="btn btn-danger waves-effect waves-light"><i class="fas fa-trash"></i></a>
                             </td>                           
                         </tr>
                         @endforeach
@@ -81,4 +81,19 @@
 });
 });
 </script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#delete-form").click(function(){
+            if(confirm("Bạn có muốn xóa tài khoản này không?"))
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+        });
+    });
+</script>
+<!-- Query Form -->
 @endsection('js')
