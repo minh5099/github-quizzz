@@ -16,7 +16,7 @@ Route::post('admin/dangnhap','QuanTriVienController@postLogin')->name('xu-ly');
 //Route Logout
 Route::get('admin/logout','QuanTriVienController@logoutAdmin')->name('logout');
 
-
+Route::get('lichsu','LichSuMuaController@index');
 
 Route::middleware('adminLogin')->group(function(){
 	Route::prefix('linh-vuc')->group(function() {

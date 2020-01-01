@@ -3,6 +3,7 @@
 
 @section('main-content')
 <!-- TABLE HOVER -->
+<?php $count = 1;?>
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -27,7 +28,7 @@
                     <tbody>
                         @foreach($listNguoiChoi as $nguoiChoi)
                         <tr>
-                            <td>{{ $nguoiChoi->id }}</td>
+                            <td><?php echo $count++?></td>
                             <td>{{ $nguoiChoi->ten_dang_nhap }}</td>
                             <!-- <td>{{ $nguoiChoi->mat_khau = Hash::make('secret')}}</td> mã hóa pass -->
                             <td>{{ $nguoiChoi->mail }}</td>
@@ -36,7 +37,7 @@
                             <td>{{ $nguoiChoi->credit }}</td>
                             <td>
                                 <a href="{{ route('nguoi-choi.cap-nhat', ['id' => $nguoiChoi->id]) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-pencil"></i></a>
-                                <a href="{{ route('nguoi-choi.xoa', ['id' => $nguoiChoi->id]) }}" class="btn btn-danger waves-effect waves-light"><i class="fas fa-trash"></i></a></td>
+                                <a href="{{ route('nguoi-choi.xoa', ['id' => $nguoiChoi->id]) }}" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Bạn Có Muốn Xóa Không?')" ><i class="fas fa-trash"></i></a></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -85,8 +86,22 @@
 	},
 	drawCallback:function()
 		{$(".dataTables_paginate > .pagination").addClass("pagination-rounded")
-	}
+	},
 });
 });
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#delete-form").click(function(){
+            if(confirm("Bạn có muốn xóa tài khoản này không?"))
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+        });
+    });
 </script>
 @endsection('js')

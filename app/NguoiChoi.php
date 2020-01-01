@@ -10,6 +10,7 @@ class NguoiChoi extends Authenticatable implements JWTSubject
 {
 	
     protected $table = 'nguoi_chois';
+    protected $hidden = array('mat_khau');
 
     public function getPasswordAttribute()
     {
@@ -28,9 +29,9 @@ class NguoiChoi extends Authenticatable implements JWTSubject
 
     use SoftDeletes;
 
-    public function goiCredit()
+    public function dsGoiCredit()
     {
-        return $this->hasMany('App\GoiCredit');
+        return $this->belongsToMany('App\GoiCredit','lich_su_mua_credits','nguoi_choi_id','goi_credit_id','id','id');
     }
 
     public function luotChoi()

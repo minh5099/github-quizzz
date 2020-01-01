@@ -19,34 +19,4 @@ class NguoiChoiController extends Controller
     		'data' => $listNguoiChoi
     	]);
     }
-
-
-    public function Register(Register $request){
-        $request->validate([
-            'mail' -> 'required',
-            'ten_dang_nhap' -> 'required',
-            'mat_khau' -> 'required'
-        ]);
-
-        $user = new NguoiChoi();
-        $user->username = $request->ten_dang_nhap;
-        $user->pass = $request->mat_khau;
-        $user->mail = $request->mail;
-
-        $user->save();
-    }
-
-    public function LoginApi(Request $request)
-    {
-
-        $loginData = $response->validate([
-            'mail' => 'mail|required',
-            'ten_dang_nhap' => 'required',
-            'mat_khau' => 'required'
-        ]);
-
-        if(!auth()->attemp($loginData)){
-            return response(['message'=>'Invalid credentials']);
-        }
-    }
 }

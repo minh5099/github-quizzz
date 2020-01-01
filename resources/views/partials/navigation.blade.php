@@ -315,7 +315,7 @@
 <!-- end Topbar -->
 
 <div class="topbar-menu">
-    <div class="container-fluid" style="max-width: 95%">
+    <div class="container-fluid" style="max-width: 100%">
         <div id="navigation">
             <!-- Navigation Menu-->
             <ul class="navigation-menu">
@@ -370,7 +370,7 @@
                     </ul>  
                 </li>
 
-                 <li class="has-submenu">
+                <li class="has-submenu">
                     <a href="#">
                         <i class="la la-diamond"></i>Quản Lý Ứng Dụng <div class="arrow-down"></div></a>
                     <ul class="submenu">
@@ -384,6 +384,11 @@
                             <a href="{{ route('tro-giup.danh-sach') }}">Cấu Hình Trợ Giúp</a>
                         </li>
                     </ul>
+                </li>
+
+                <li class="has-submenu">
+                    <a href="#">
+                        <i class="fas fa-trash"></i>Danh Sách Đã Xóa</a>
                 </li>
             </ul>
             <!-- End navigation menu -->

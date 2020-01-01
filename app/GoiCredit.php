@@ -11,8 +11,8 @@ class GoiCredit extends Model
     use SoftDeletes;
     protected $table = 'goi_credits';
 
-    public function nguoimua()
+    public function dsNguoiChoi()
     {
-    	return $this->hasMany('App\NguoiChoi');
+        return $this->belongsToMany('App\NguoiChoi','lich_su_mua_credits','goi_credit_id','nguoi_choi_id','id','id');
     }
 }

@@ -8,6 +8,10 @@ use App\Http\Requests\RequestLinhVuc;
 
 class LinhVucController extends Controller
 {
+    public function exd()
+    {
+        return view('linh-vuc.formPopup');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -42,7 +46,7 @@ class LinhVucController extends Controller
         $linhVuc->ten_linh_vuc = $request->ten_linh_vuc;
         $linhVuc->save();
 
-        return redirect()->route('linh-vuc.danh-sach');
+        return redirect()->route('linh-vuc.danh-sach')->with('success','Data Saved');
     }
 
     /**

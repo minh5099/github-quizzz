@@ -9,6 +9,8 @@
             <div class="card-body">
                 <a href="{{route('cau-hoi.them-moi')}}" class="btn btn-primary waves-effect waves-light"> Thêm Mới </a>
                 
+                
+
                 <h4 class="header-title mt-3 mb-3">Danh Sách Câu Hỏi</h4>
 
                     <table id="basic-datatable" class="table w-100">
@@ -39,7 +41,7 @@
                             <td>{{ $cauHoi->dap_an }}</td>
                             <td>
                                 <a href="{{ route('cau-hoi.cap-nhat', ['id' => $cauHoi->id]) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-pencil"></i></a>
-                                <a href="{{ route('cau-hoi.xoa', ['id' => $cauHoi->id]) }}" class="btn btn-danger waves-effect waves-light"><i class="fas fa-trash"></i></a></td>
+                                <a href="{{ route('cau-hoi.xoa', ['id' => $cauHoi->id]) }}" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Bạn Có Muốn Xóa Không?')"><i class="fas fa-trash"></i></a></td>
                         </tr>
                         @endforeach
                     </tbody>

@@ -13,6 +13,6 @@ class LinhVuc extends Model
 
     public function cauhoi()
    	{
-   		return $this->hasOne('App\CauHoi');
+   		return $this->hasMany('App\CauHoi','linh_vuc_id');
    	}
 }

@@ -1,42 +1,40 @@
 @extends('layout')
 
-
+<?php $count = 1?>
 @section('main-content')
 <!-- TABLE HOVER -->
+
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-
-                <a href="{{route('linh-vuc.them-moi')}}" class="btn btn-primary waves-effect waves-light"> Thêm Mới </a>
-               
-                <!-- Loading Field List  -->
-                <h4 class="header-title mt-3  mb-3">Danh Sách Lĩnh Vực</h4>
+                <h4 class="header-title mt-3 mb-3">Lịch Sử Mua Credit</h4>
                 <table id="basic-datatable-1" class="table dt-responsive nowrap">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Tên Lĩnh Vực</th>
-                            <th></th>
+                            <th>STT</th>
+                            <th>Người Chơi</th>
+                            <th>Tên Gói</th>
+                            <th>Credit</th>
+                            <th>Số Tiền</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($listLinhVuc as $linhVuc)
+                        @foreach($data as $nguoiChoi)
                         <tr> 
-                            <td>{{ $linhVuc->id }}</td>
-                            <td>{{ $linhVuc->ten_linh_vuc }}</td>
-                            <td>
-                               <a href="{{ route('linh-vuc.cap-nhat', ['id' => $linhVuc->id]) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-pencil"></i></a>
-                               <a href="{{ route('linh-vuc.xoa', ['id' => $linhVuc->id]) }}" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Bạn Có Muốn Xóa Không?')"><i class="fas fa-trash"></i></a>
-                           </td>                           
-                       </tr>
-                       @endforeach
-                   </tbody>
-               </table>
+                            <td><?php echo $count++?></td> <!--Trỏ lấy id trong table gói credit qua controller-->
+                            <td>{{$nguoiChoi->ten_dang_nhap}}</td>
+                            <td>{{$nguoiChoi->ten_goi}}</td>
+                            <td>{{$nguoiChoi->credit}}</td>
+                            <td>{{$nguoiChoi->so_tien}}</td>                       
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
 
-           </div> <!-- end card body-->
-       </div> <!-- end card -->
-   </div><!-- end col-->
+            </div> <!-- end card body-->
+        </div> <!-- end card -->
+    </div><!-- end col-->
 </div>
 <!-- end row-->
 <!-- END TABLE HOVER -->

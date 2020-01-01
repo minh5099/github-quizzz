@@ -88,14 +88,10 @@
     $(document).ready(function() {
         $(".btn-submit").click(function(e){
             e.preventDefault();
-
-
             var _token = $("input[name='_token']").val();
             var email = $("input[name='email']").val();
             var password = $("input[name='password']").val();
             var ho_ten = $("input[name='ho_ten']").val();
-
-
             $.ajax({
                 url: "/quan-tri-vien/them-moi",
                 type:'POST',
@@ -113,19 +109,13 @@
                     }
                 }
             });
-
-
         }); 
-
-
         function printErrorMsg (msg) {
             $(".print-error-msg").find("ul").html('');
             $(".print-error-msg").css('display','block');
             $.each( msg, function( key, value ) {
                 $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
             });
-            
-
         }
     });
 </script>

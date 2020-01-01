@@ -63,7 +63,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'adminLogin' => \App\Http\Middleware\Admin::class,
         'jwt.auth' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
-        'jwt.refresh' => Tymon\JWTAuth\Http\Middleware\RefreshToken::class,
+        'jwt.refresh' => \Tymon\JWTAuth\Http\Middleware\RefreshToken::class,
+        'assign.guard' => \App\Http\Middleware\AssignGuard::class,
     ];
 
     /**

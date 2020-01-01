@@ -31,7 +31,7 @@
                             <td>{{ $goiCredit->so_tien }}</td>
                             <td>
                             	<a href="{{ route('goi-credit.cap-nhat', ['id' => $goiCredit->id]) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-pencil"></i></a>
-                            	<a href="{{ route('goi-credit.xoa', ['id' => $goiCredit->id]) }}" class="btn btn-danger waves-effect waves-light"><i class="fas fa-trash"></i></a>
+                            	<a href="{{ route('goi-credit.xoa', ['id' => $goiCredit->id]) }}" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Bạn Có Muốn Xóa Không?')"><i class="fas fa-trash"></i></a>
                             </td>                           
                         </tr>
                         @endforeach
