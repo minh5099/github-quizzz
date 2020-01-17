@@ -25,7 +25,6 @@
                             <td>{{ $linhVuc->ten_linh_vuc }}</td>
                             <td>
                                 <a href="{{ route('linh-vuc.restore',$linhVuc->id) }}" class="btn btn-info waves-effect waves-light"><i class="fas fa-trash-restore"></i></a>
-                                <!--<a href="{{ route('linh-vuc.delDt', ['id' => $linhVuc->id]) }}" class="btn btn-danger waves-effect waves-light"><i class="fas fa-trash"></i></a>-->
                             </td>                           
                         </tr>
                         @endforeach

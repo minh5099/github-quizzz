@@ -25,11 +25,11 @@ class RequestNguoiChoi extends FormRequest
     {
         return [
             'ten_dang_nhap' => 'required|min:5|max:100',
-            'mat_khau' => 'required|min:10|max:100',
-            'mail' => 'required|email|unique:nguoi_chois,mail|min:10|max:100',
-            'hinh_dai_dien' => 'required',
-            'diem_cao_nhat' => 'required|min:1|max:7|integer',
-            'credit' => 'required|min:1|max:7|integer'
+            'mat_khau' => 'required|min:10|max:256',
+            'mail' => 'required|email|unique:nguoi_chois,mail|min:8|max:100',
+            'hinh_dai_dien' => 'required|image|mimes:png,jpg,jpeg',
+            'diem_cao_nhat' => 'required|min:1|max:9999|integer',
+            'credit' => 'required|min:1|max:9999|integer'
         ];
     }
 
@@ -48,12 +48,13 @@ class RequestNguoiChoi extends FormRequest
             'mail.min' => 'Email > 10 Kí Tự',
             'mail.max' => 'Email < 100 Kí Tự',
             'hinh_dai_dien' => 'Chọn Ảnh Đại Diện',
+            'hinh_dai_dien' => 'Chọn File Sai',
             'diem_cao_nhat.required' => 'Nhập Điểm',
             'diem_cao_nhat.min' => 'Điểm >= 0',
-            'diem_cao_nhat.max' => 'Điểm cao nhất : 9999999',
+            'diem_cao_nhat.max' => 'Điểm cao nhất : 9999s',
             'credit.required' => 'Nhập Credit',
             'credit.min' => 'Credit Yêu Cầu 1 chứ số',
-            'credit.max' => 'Credit Max 9999999'
+            'credit.max' => 'Credit Max 9999'
         ];
     }
 }

@@ -52,7 +52,7 @@ class CauHoiController extends Controller
 
         $cauHoi->save();
 
-        return redirect()->route('cau-hoi.danh-sach');
+        return redirect()->route('cau-hoi.danh-sach')->with('success','Thêm Mới Thành Công');
     }
 
     /**
@@ -99,7 +99,7 @@ class CauHoiController extends Controller
 
         $cauHoi->save();
 
-        return redirect()->route('cau-hoi.danh-sach');
+        return redirect()->route('cau-hoi.danh-sach')->with('success','Cập Nhật Thành Công');
     }
 
     /**

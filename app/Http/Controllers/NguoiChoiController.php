@@ -41,12 +41,19 @@ class NguoiChoiController extends Controller
         $nguoiChoi->ten_dang_nhap = $request->ten_dang_nhap;
         $nguoiChoi->mat_khau = $request->mat_khau;
         $nguoiChoi->mail = $request->mail;
-        $nguoiChoi->hinh_dai_dien = $request->hinh_dai_dien;
+        if($request->hasFile('hinh_dai_dien'))
+        {
+            $file = $request->hinh_dai_dien;
+            $fileLast = $file->getClientOriginalExtension();
+            $filename = $file->getClientOriginalName();
+            $file->move(public_path('img'),$filename);
+            $nguoiChoi->hinh_dai_dien = $filename;
+        }
         $nguoiChoi->diem_cao_nhat = $request->diem_cao_nhat;
         $nguoiChoi->credit = $request->credit;
         $nguoiChoi->mat_khau = bcrypt($request->mat_khau);
         $nguoiChoi->save();
-        return redirect()->route('nguoi-choi.danh-sach');
+        return redirect()->route('nguoi-choi.danh-sach')->with('success','Thêm Mới Thành Công');
     }
 
     /**
@@ -85,13 +92,20 @@ class NguoiChoiController extends Controller
         $nguoiChoi->ten_dang_nhap = $request->ten_dang_nhap;
         $nguoiChoi->mat_khau = $request->mat_khau;
         $nguoiChoi->mail = $request->mail;
-        $nguoiChoi->hinh_dai_dien = $request->hinh_dai_dien;
+        if($request->hasFile('hinh_dai_dien'))
+        {
+            $file = $request->hinh_dai_dien;
+            $fileLast = $file->getClientOriginalExtension();
+            $filename = $file->getClientOriginalName();
+            $file->move(public_path('img'),$filename);
+            $nguoiChoi->hinh_dai_dien = $filename;
+        }
         $nguoiChoi->diem_cao_nhat = $request->diem_cao_nhat;
         $nguoiChoi->credit = $request->credit;
         $nguoiChoi->mat_khau = bcrypt($request->mat_khau);
         
         $nguoiChoi->save();
-        return redirect()->route('nguoi-choi.danh-sach');
+        return redirect()->route('nguoi-choi.danh-sach')->with('success','Cập Nhật Thành Công');
     }
 
     /**

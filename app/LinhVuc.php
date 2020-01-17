@@ -15,4 +15,9 @@ class LinhVuc extends Model
    	{
    		return $this->hasMany('App\CauHoi','linh_vuc_id');
    	}
+
+   	public function cauHoi1()
+   	{
+   		return $this->belongsTo(CauHoi::class,'id');
+   	}
 }

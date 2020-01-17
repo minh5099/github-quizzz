@@ -78,14 +78,16 @@ class AuthController extends Controller
                 ];
                 $token = auth('api')->attempt($credentials)
                 return response()->json([
-                    'success' => true;
-                    'message' => 'cập nhật thành công';
-                    'token' => $token;
+                    'success' => true,
+                    'message' => 'cập nhật thành công',
+                    'token' => $token,
                 ],200);
             }
-            return response()->json([
-                'success' => false;
+            else{
+                 return response()->json([
+                'success' => false,
                 'message' => 'cập nhật thất bại';
             ],401);
+            }
         }
     }

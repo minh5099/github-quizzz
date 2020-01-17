@@ -13,6 +13,6 @@ class CauHoi extends Model
 
     public function linhVuc()
     {
-    	return $this->belongsTo('App\LinhVuc','linh_vuc_id');
+    	return $this->belongsTo('App\LinhVuc','id');
     }
 }

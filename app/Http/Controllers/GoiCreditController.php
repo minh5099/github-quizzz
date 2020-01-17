@@ -44,7 +44,7 @@ class GoiCreditController extends Controller
         $goiCredit->so_tien = $request->so_tien;
         $goiCredit->save();
 
-        return redirect()->route('goi-credit.danh-sach');
+        return redirect()->route('goi-credit.danh-sach')->with('success','Thêm Mới Thành Công');
     }
 
     /**
@@ -85,7 +85,7 @@ class GoiCreditController extends Controller
         $goiCredit->so_tien = $request->so_tien;
         $goiCredit->save();
 
-        return redirect()->route('goi-credit.danh-sach');
+        return redirect()->route('goi-credit.danh-sach')->with('success','Cập Nhật Thành Công');
     }
 
     /**

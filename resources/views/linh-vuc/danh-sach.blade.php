@@ -3,6 +3,11 @@
 
 @section('main-content')
 <!-- TABLE HOVER -->
+@if(\Session::has('success'))
+<div class="alert alert-success">
+<p>{{\Session::get('success')}}</p>
+</div>
+@endif
 <div class="row">
     <div class="col-12">
         <div class="card">

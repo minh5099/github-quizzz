@@ -7,9 +7,9 @@
             <div class="card-body">
                 <h4 class="mb-3 header-title">@if(isset($nguoiChoi)) Cập Nhật @else Thêm @endif Mới Người Chơi</h4>
                 @if(isset($nguoiChoi))
-                    <form action="{{ route('nguoi-choi.xu-ly-cap-nhat',['id' => $nguoiChoi->id]) }}" method="POST">
+                    <form action="{{ route('nguoi-choi.xu-ly-cap-nhat',['id' => $nguoiChoi->id]) }}" method="POST" enctype="multipart/form-data">
                 @else
-                    <form action="{{ route('nguoi-choi.xu-ly-them-moi') }}" method="POST">
+                    <form action="{{ route('nguoi-choi.xu-ly-them-moi') }}" method="POST" enctype="multipart/form-data">
                 @endif
                         @csrf
                         <!--@if(count($errors)>0)
@@ -29,8 +29,8 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="mat_khau">Mật Khẩu</label>
-                            <input type="password" class="form-control" id="mat_khau" name="mat_khau" placeholder="Mật Khẩu" @if(isset($nguoiChoi)) value="{{ $nguoiChoi->mat_khau }}" @endif>
+                            <label for="mat_khau" @if(isset($nguoiChoi)) value="{{ $nguoiChoi->mat_khau }}" style="visibility:hidden;" @endif>Mật Khẩu</label>
+                            <input type="password" class="form-control" id="mat_khau" name="mat_khau" placeholder="Mật Khẩu" @if(isset($nguoiChoi)) value="{{ $nguoiChoi->mat_khau }}" style="visibility:hidden;" @endif>
                             @if($errors->has('mat_khau'))
                                 <p class="text-danger">{{ $errors->first('mat_khau') }}</p>
                             @endif
@@ -43,8 +43,9 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="hinh_dai_dien">Hình Đại Diện</label>
-                            <input type="text" class="form-control" id="hinh_dai_dien" name="hinh_dai_dien" placeholder="Hình Đại Diện" @if(isset($nguoiChoi)) value="{{ $nguoiChoi->hinh_dai_dien }}" @endif>
+                            <label for="hinh_dai_dien">Hình Đại Diện</label><br/>
+                            <img src="#" alt="your Image" id="showImg">
+                            <input type="file" id="hinh_dai_dien" name="hinh_dai_dien" onchange="readURL(this);" @if(isset($nguoiChoi)) value="{{ $nguoiChoi->hinh_dai_dien }}" @endif >
                             @if($errors->has('hinh_dai_dien'))
                                 <p class="text-danger">{{ $errors->first('hinh_dai_dien') }}</p>
                             @endif
@@ -70,4 +71,21 @@
         </div>
     </div>
 </div>
+@endsection
+@section('js')
+    <script type="text/javascript">
+        function readURL(input){
+            if(input.files && input.files[0]){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    $(#showImg)
+                                .attr('src',e.target.result)
+                                .width(150)
+                                .height(200);
+                                
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 @endsection

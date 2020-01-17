@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/sendmail','SendMailController@sendMail');
 Route::get('admin/dangnhap','QuanTriVienController@getLogin')->name('dangnhap');
 Route::post('admin/dangnhap','QuanTriVienController@postLogin')->name('xu-ly');
 

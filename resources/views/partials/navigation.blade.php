@@ -385,11 +385,6 @@
                         </li>
                     </ul>
                 </li>
-
-                <li class="has-submenu">
-                    <a href="#">
-                        <i class="fas fa-trash"></i>Danh Sách Đã Xóa</a>
-                </li>
             </ul>
             <!-- End navigation menu -->
 

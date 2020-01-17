@@ -11,6 +11,7 @@ class NguoiChoi extends Authenticatable implements JWTSubject
 	
     protected $table = 'nguoi_chois';
     protected $hidden = array('mat_khau');
+    protected $fillable= ["mail","ten_dang_nhap"];
 
     public function getPasswordAttribute()
     {

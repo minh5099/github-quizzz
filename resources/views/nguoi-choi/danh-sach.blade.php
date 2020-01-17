@@ -4,6 +4,11 @@
 @section('main-content')
 <!-- TABLE HOVER -->
 <?php $count = 1;?>
+@if(\Session::has('success'))
+<div class="alert alert-success">
+<p>{{\Session::get('success')}}</p>
+</div>
+@endif
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -32,7 +37,7 @@
                             <td>{{ $nguoiChoi->ten_dang_nhap }}</td>
                             <!-- <td>{{ $nguoiChoi->mat_khau = Hash::make('secret')}}</td> mã hóa pass -->
                             <td>{{ $nguoiChoi->mail }}</td>
-                            <td>{{ $nguoiChoi->hinh_dai_dien }}</td>
+                            <td><img src="{{asset('img/' . $nguoiChoi->hinh_dai_dien)}}" width="100px" height="100px"></td>
                             <td>{{ $nguoiChoi->diem_cao_nhat }}</td>
                             <td>{{ $nguoiChoi->credit }}</td>
                             <td>

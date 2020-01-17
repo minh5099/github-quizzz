@@ -28,7 +28,7 @@ Route::middleware(['assign.guard:api','jwt.auth'])->group(function(){
 	Route::put('cap-nhat/{id}','API\AuthController@capNhat');
 });
 Route::post('dang-ki','API\RegisterController@dangKi');
-
+Route::post('reset','API\ResetPassController@resetPassword');
 // Route::group([
 // 	'middleware' => 'api',
 // 	'namespace' => 'App\Http\Controllers',

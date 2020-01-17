@@ -30,8 +30,8 @@
                             
                         </div>
                         <div class="form-group">
-                            <label for="password">Mật Khẩu</label>
-                            <input  class="form-control" id="password" name="password" placeholder="Mật Khẩu" @if(isset($quanTriVien)) value="{{ $quanTriVien->password }}" @endif>
+                            <label for="password" @if(isset($quanTriVien)) value="{{ $quanTriVien->password }}" style="visibility:hidden;" @endif>Mật Khẩu</label>
+                            <input  class="form-control" id="password" name="password" placeholder="Mật Khẩu" type="password" @if(isset($quanTriVien)) value="{{ $quanTriVien->password }}" type="hidden" @endif >
                         </div>
                        <div class="form-group">
                             <label for="ho_ten">Họ Tên</label>

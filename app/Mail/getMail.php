@@ -22,7 +22,7 @@ class getMail extends Mailable
     public function __construct($getMail)
     {
         //Khởi tạo giá trị
-        $this->getMail = $getMail
+        $this->getMail = $getMail;
     }
 
     /**
@@ -33,6 +33,6 @@ class getMail extends Mailable
     //Phương thức build dùng để tạo phương thức mes để gửi
     public function build()
     {
-        return $this->view('view.name');
+        return $this->text('sendMail');
     }
 }

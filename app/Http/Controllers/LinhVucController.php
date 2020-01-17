@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\LinhVuc;
+use App\CauHoi;
 use App\Http\Requests\RequestLinhVuc;
 
 class LinhVucController extends Controller
@@ -46,7 +47,7 @@ class LinhVucController extends Controller
         $linhVuc->ten_linh_vuc = $request->ten_linh_vuc;
         $linhVuc->save();
 
-        return redirect()->route('linh-vuc.danh-sach')->with('success','Data Saved');
+        return redirect()->route('linh-vuc.danh-sach')->with('success','Thêm Mới Thành Công');
     }
 
     /**
@@ -85,7 +86,7 @@ class LinhVucController extends Controller
         $linhVuc->ten_linh_vuc = $request->ten_linh_vuc;
         $linhVuc->save();
 
-        return redirect()->route('linh-vuc.danh-sach');
+        return redirect()->route('linh-vuc.danh-sach')->with('success','Cập Nhật Thành Công');
     }
 
     /**
@@ -97,8 +98,8 @@ class LinhVucController extends Controller
     public function destroy($id)
     {
         $linhVuc = LinhVuc::find($id);
+        $cauHoi = CauHoi::where('linh_vuc_id',$id)->get()->each->delete();
         $linhVuc->delete();
-
         return redirect()->route('linh-vuc.danh-sach');
     }
 
@@ -111,6 +112,7 @@ class LinhVucController extends Controller
     public function restore($id)
     {
         LinhVuc::onlyTrashed()->where('id',$id)->restore();
+        CauHoi::onlyTrashed()->where('linh_vuc_id',$id)->restore();
         return redirect()->route('linh-vuc.danh-sach');
     }
 }
